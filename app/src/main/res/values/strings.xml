@@ -54,4 +54,26 @@
     <string name="facebook_login_protocol_scheme" translatable="false">fb1:228736357241:android:d00d7f44b6a96dc1ce95a8</string>
     <string name="SignOut">SignOut</string>
     <string name="sign_in_with_google">Sign in with Google</string>
+    <string name="phone_verification">Phone verification</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="Verify_number">Verify Number</string>
+    <string name="Upload">upload</string>
+    <string name="Get_image">Get Image</string>
+    <string name="Image_list">Image List</string>
+    <string name="Or">Or</string>
+    <string name="Verfication_code">Verfication Code</string>
+    <string name="verify_code">Verify Code</string>
+    <string name="Status">Status</string>
+    <string name="msg_token_fmt" translatable="false">InstanceID Token: %s</string>
+    <string name="area">Area</string>
+    <string name="get">get</string>
+    <string name="Frequent">Frequent Calls</string>
+    <string name="recent_calls">Recent Calls</string>
+    <string name="Contact_list">Contact List</string>
+    <string name="intentservice">IntentService</string>
+    <string name="service">Service</string>
+    <string name="on_bind">On Bind</string>
+    <string name="foreground">Foreground</string>
+    <string name="m_on_bind">M - On Bind</string>
+
 </resources>

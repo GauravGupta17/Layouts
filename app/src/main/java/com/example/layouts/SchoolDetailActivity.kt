@@ -2,6 +2,7 @@ package com.example.layouts
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -31,6 +32,7 @@ class SchoolDetailActivity : AppCompatActivity() {
         ) { position, holder ->
             holder.itemView.tvId.text = list[position].student.id.toString()
             holder.itemView.tvStudentName.text = list[position].student.name
+            Log.d(TAG,"anything")
             holder.itemView.tvFathersName.text = list[position].parent.fatherName
             holder.itemView.tvMothersName.text = list[position].parent.mothersName
             holder.itemView.tvClass.text = list[position].student.mClass.toString()
@@ -52,6 +54,10 @@ class SchoolDetailActivity : AppCompatActivity() {
     }
 
     class SchoolViewHolder(view: View) : RecyclerView.ViewHolder(view)
+    companion object{
+        const val TAG = "SchoolDetailActivity"
+
+    }
 
 
 }

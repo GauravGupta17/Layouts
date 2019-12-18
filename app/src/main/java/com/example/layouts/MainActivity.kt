@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.adapters.ActivityAdapter
 import com.example.utilis.ItemTouchHelperCallBack
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.acivity_recycler.*
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -21,9 +22,12 @@ class MainActivity : AppCompatActivity() {
     private var viewAdapter: ActivityAdapter? = null
     var activitylist = arrayListOf<String>()
 
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
 
 
         activitylist = arrayListOf(
@@ -41,7 +45,15 @@ class MainActivity : AppCompatActivity() {
             "Content Provider",
             "School App",
             "FireBase LogIn",
-            "Email Login"
+            "FireBase Email Login",
+            "FireBase Storage",
+            "FireBase Messaging",
+            "FireStore",
+            "RealTime DB",
+            "View Pager Basic",
+            "View Pager Tab",
+            "View Pager 2",
+            "Services"
         )
 
         viewAdapter = ActivityAdapter(activitylist)

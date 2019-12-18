@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/storage_activity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/ivLoadImage"
+        android:layout_width="wrap_content"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        android:scaleType="fitCenter"
+        android:visibility="gone"
+        />
+
+    <Button
+        android:id="@+id/btnGetImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/Get_image" />
+
+    <TextView
+        android:id="@+id/tvOr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Or"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        />
+    <Button
+        android:id="@+id/btnClickImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/click" />
+
+
+    <Button
+        android:id="@+id/btnUpload"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/Upload"
+        android:visibility="invisible" />
+     <ProgressBar
+        android:id="@+id/pbUpload"
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:layout_gravity="center"
+         android:visibility="gone"
+         />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnImageList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/Image_list"
+        android:layout_gravity="center"
+        />
+
+
+</LinearLayout>

@@ -5,21 +5,21 @@
 
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="true"
-        />
-   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_USER_DICTIONARY"/>
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
 
     <application
+        android:name="com.example.App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="com.example.App"
-        tools:ignore="GoogleAppIndexingWarning"
-        >
+        tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -32,7 +32,7 @@
         <activity android:name=".ImageFilterActivity" />
         <activity
             android:name=".ContactListActivity"
-            android:parentActivityName=".MainActivity" >
+            android:parentActivityName=".MainActivity">
 
 
             <meta-data
@@ -43,17 +43,17 @@
         </activity>
 
 
-        <activity android:name=".ContactDetailActivity"
-            android:theme="@style/Theme.AppCompat.Dialog"
-            />
+        <activity
+            android:name=".ContactDetailActivity"
+            android:theme="@style/Theme.AppCompat.Dialog" />
 
         <activity android:name=".AnimationsActivity" />
         <activity android:name=".FragmentsActivity" />
         <activity android:name=".DetailsActivity" />
         <activity android:name=".FormActivity" />
-        <activity android:name=".SharedPrefActivity"
-                  android:screenOrientation="portrait"
-            />
+        <activity
+            android:name=".SharedPrefActivity"
+            android:screenOrientation="portrait" />
 
         <activity android:name=".FilesActivity" />
         <activity android:name=".TestViewModel" />
@@ -62,25 +62,49 @@
         <activity android:name=".PlayListActivity" />
         <activity android:name=".SongFormActivity" />
         <activity android:name=".ContentProviderActivity" />
+
         <provider
-            android:authorities="com.example.layouts.provider"
             android:name="com.example.contentProvider.WordContentProvider"
-            />
+            android:authorities="com.example.layouts.provider" />
+
         <activity android:name=".SchoolInfoActivity" />
         <activity android:name=".SchoolDetailActivity" />
         <activity android:name=".LogInPlayListActivity" />
-        <activity android:name=".EmailActivity" >
-            <intent-filter  android:autoVerify="true">
+        <activity android:name=".EmailActivity">
+            <intent-filter android:autoVerify="true">
                 <action android:name="android.intent.action.SEND" />
                 <data
-                   android:scheme="http"
                     android:host="www.example.com"
                     android:pathPrefix="/signUp"
-                    />
+                    android:scheme="http" />
             </intent-filter>
 
         </activity>
+        <activity android:name=".StorageActivity" />
+        <activity android:name=".ImageListActivity" />
+        <activity android:name=".FireBaseMessge" />
+        <activity android:name=".FireStoreActivity" />
+        <activity android:name=".RealTimeDataBaseActivity" />
+        <activity android:name=".ServiceActivity" />
+        <activity android:name=".ViewPagerActivity" />
+        <activity
+            android:name=".TabViewPagerActivity"
+            android:theme="@style/ActivityTheme" />
+        <activity android:name=".ViewPager2Activity" />
 
+        <service
+            android:name="com.example.service.MyFirebaseService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+
+        </service>
+        <service android:name="com.example.service.TestService" />
+        <service android:name="com.example.service.TestIntentService" />
+        <service android:name="com.example.service.BoundServiceMessenger" />
+        <service android:name=".TestJobIntentService" />
+        <receiver android:name="com.example.receivers.LiveReceivers" />
     </application>
 
 </manifest>

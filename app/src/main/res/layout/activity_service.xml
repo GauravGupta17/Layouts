@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/StartServiceActivity"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tvValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btnIntentService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/intentservice" />
+
+    <Button
+        android:id="@+id/btnService"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/service" />
+
+    <Button
+        android:id="@+id/btnOnBind"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/on_bind" />
+
+
+    <Button xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/btnOnForeground"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/foreground"
+        tools:targetApi="N" />
+
+    <Button
+        android:id="@+id/btnOnBindMessanger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/m_on_bind" />
+
+
+</LinearLayout>

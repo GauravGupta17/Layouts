@@ -37,11 +37,27 @@ class Utils {
 
                 11 -> intent = Intent(context, ContentProviderActivity::class.java)
 
-                12 -> intent = Intent(context,SchoolDetailActivity::class.java)
+                12 -> intent = Intent(context, SchoolDetailActivity::class.java)
 
-                13-> intent = Intent(context,LogInPlayListActivity::class.java)
+                13 -> intent = Intent(context, LogInPlayListActivity::class.java)
 
-                14 -> intent = Intent(context,EmailActivity::class.java)
+                14 -> intent = Intent(context, EmailActivity::class.java)
+
+                15 -> intent = Intent(context, StorageActivity::class.java)
+
+                16 -> intent = Intent(context, FireBaseMessge::class.java)
+
+                17 -> intent = Intent(context, FireStoreActivity::class.java)
+
+                18 -> intent = Intent(context, RealTimeDataBaseActivity::class.java)
+
+                19 -> intent = Intent(context, ViewPagerActivity::class.java)
+
+                20 -> intent = Intent(context, TabViewPagerActivity::class.java)
+
+                21 -> intent = Intent(context, ViewPager2Activity::class.java)
+
+                22 -> intent = Intent(context, ServiceActivity::class.java)
 
             }
 
