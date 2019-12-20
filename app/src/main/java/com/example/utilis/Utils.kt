@@ -59,6 +59,8 @@ class Utils {
 
                 22 -> intent = Intent(context, ServiceActivity::class.java)
 
+                23 -> intent = Intent(context, WorkManagerActivity::class.java)
+
             }
 
             context.startActivity(intent)

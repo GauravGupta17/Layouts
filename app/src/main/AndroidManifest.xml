@@ -91,6 +91,7 @@
             android:name=".TabViewPagerActivity"
             android:theme="@style/ActivityTheme" />
         <activity android:name=".ViewPager2Activity" />
+        <activity android:name=".WorkManagerActivity" />
 
         <service
             android:name="com.example.service.MyFirebaseService"
@@ -105,6 +106,10 @@
         <service android:name="com.example.service.BoundServiceMessenger" />
         <service android:name=".TestJobIntentService" />
         <receiver android:name="com.example.receivers.LiveReceivers" />
+        <provider
+            android:name="androidx.work.impl.WorkManagerInitializer"
+            android:authorities="${applicationId}.workmanager-init"
+            tools:node="remove" />
     </application>
 
 </manifest>

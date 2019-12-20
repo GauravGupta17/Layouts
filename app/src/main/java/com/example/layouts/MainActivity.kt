@@ -54,6 +54,7 @@ class MainActivity : AppCompatActivity() {
             "View Pager Tab",
             "View Pager 2",
             "Services"
+        ,   "WorkManager"
         )
 
         viewAdapter = ActivityAdapter(activitylist)

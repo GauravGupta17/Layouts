@@ -54,7 +54,6 @@ class FormActivity : AppCompatActivity() {
     override fun onBackPressed() {
         super.onBackPressed()
         i -= 1
-
     }
 
 

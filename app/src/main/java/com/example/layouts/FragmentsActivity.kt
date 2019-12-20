@@ -48,7 +48,7 @@ class FragmentsActivity : AppCompatActivity(), Connector {
 
             val DetailFragment =
                 supportFragmentManager.findFragmentById(R.id.flDetails) as DetailFragment
-            DetailFragment.DisplayDetail(detail)
+                DetailFragment.DisplayDetail(detail)
 
 
         } else {

@@ -22,6 +22,7 @@ class StorageActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_storage)
+
         btnGetImage.setOnClickListener {
             val intent = Intent().apply {
                 action = Intent.ACTION_GET_CONTENT

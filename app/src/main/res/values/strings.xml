@@ -75,5 +75,15 @@
     <string name="on_bind">On Bind</string>
     <string name="foreground">Foreground</string>
     <string name="m_on_bind">M - On Bind</string>
+    <string name="little_blurred">Little Blurred</string>
+    <string name="more_blurred">More Blurred</string>
+    <string name="most_blurred">Most Blurred</string>
+    <string name="Go">GO</string>
+    <string name="outputMessage">Image Saved in Gallery</string>
+    <string name="Set_blur_level">Set Blur Level</string>
+    <string name="Undo">Undo</string>
+    <string name="save">Save</string>
+    <string name="savingMessage">back press to save Image</string>
+    <string name="Blurlvlmessage">Set Blur Level</string>
 
 </resources>
