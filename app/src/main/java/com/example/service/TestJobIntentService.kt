@@ -1,6 +1,7 @@
-package com.example.layouts
+package com.example.service
 
 import android.content.Intent
+import android.os.IBinder
 import android.util.Log
 import androidx.core.app.JobIntentService
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
@@ -29,6 +30,7 @@ class TestJobIntentService : JobIntentService() {
         }
 
     }
+
 
     companion object {
         const val TAG = "TestJobIntentService"

@@ -67,7 +67,7 @@ class ParentContactAdapter(private val contactList: MutableMap<Int,ArrayList<Con
     override fun getItemCount() :Int {
 
 
-        Log.d("sfdfdfdfdf","${contactList.count()}")
+        Log.d("ParentContactAdapter","${contactList.count()}")
 
         return contactList.count()
 

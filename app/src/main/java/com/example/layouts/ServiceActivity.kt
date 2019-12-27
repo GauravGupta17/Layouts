@@ -9,9 +9,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.localbroadcastmanager.content.LocalBroadcastManager
 import com.example.receivers.LiveReceivers
-import com.example.service.BoundServiceMessenger
-import com.example.service.TestIntentService
-import com.example.service.TestService
+import com.example.service.*
 import kotlinx.android.synthetic.main.activity_service.*
 
 class ServiceActivity : AppCompatActivity() {

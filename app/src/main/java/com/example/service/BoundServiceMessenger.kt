@@ -21,8 +21,6 @@ class BoundServiceMessenger : Service(){
             super.handleMessage(msg)
         }
 
-
-
     }
     override fun onBind(p0: Intent?): IBinder? {
 

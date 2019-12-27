@@ -2,6 +2,8 @@ package com.example
 
 import android.app.Application
 import androidx.work.Configuration
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
 
 lateinit var appctx:Application
 
@@ -18,6 +20,10 @@ class App :Application(),Configuration.Provider {
         super.onCreate()
         appctx = this
 
+        startKoin {
+            androidContext(this@App)
+            modules(listOf(vmModule, appModule, firebaseModule))
+        }
     }
 
 

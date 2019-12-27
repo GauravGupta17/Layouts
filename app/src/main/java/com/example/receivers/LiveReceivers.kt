@@ -6,8 +6,8 @@ import android.content.Context
 import android.content.Intent
 import android.util.Log
 import androidx.core.app.NotificationCompat
-import com.example.layouts.BROADCAST_ACTION
-import com.example.layouts.EXTENDED_DATA_STATUS
+import com.example.service.BROADCAST_ACTION
+import com.example.service.EXTENDED_DATA_STATUS
 import android.content.Context.NOTIFICATION_SERVICE
 import com.example.layouts.R
 

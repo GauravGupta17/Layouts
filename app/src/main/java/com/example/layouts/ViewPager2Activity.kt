@@ -1,20 +1,18 @@
 package com.example.layouts
 
-import android.graphics.Bitmap
-import android.graphics.BitmapFactory
-import android.graphics.Color
-import android.graphics.ImageDecoder.decodeBitmap
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.ViewPager2
+import com.bumptech.glide.Glide
 import com.example.adapters.GenAdapter
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageReference
 import kotlinx.android.synthetic.main.activity_view_pager_2.*
 import kotlinx.android.synthetic.main.view_intro_pager2.view.*
+import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions.withCrossFade
 
 class ViewPager2Activity : AppCompatActivity() {
 
@@ -40,7 +38,8 @@ class ViewPager2Activity : AppCompatActivity() {
                   { position, holder ->
                       val pathRef = storageRef.child("images/${list[position].name}")
                       pathRef.getBytes(ImageListActivity.TWO_MEGABYTES).addOnSuccessListener {
-                          holder.itemView.ivViewPager.setImageBitmap(decodeBitmap(it))
+
+                         Glide.with(holder.itemView).load(it).transition(withCrossFade()).into(holder.itemView.ivViewPager)
 
                       }.addOnFailureListener {
                           Log.d(ImageListActivity.TAG,list[position].name)
@@ -58,35 +57,5 @@ class ViewPager2Activity : AppCompatActivity() {
 
     class ViewPagerVH(view: View) : RecyclerView.ViewHolder(view)
 
-    private fun decodeBitmap(byteArray: ByteArray): Bitmap {
-        return BitmapFactory.Options().run {
-            inJustDecodeBounds = true
-            BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size, this)
-            inSampleSize = calulateSampleSize(this)
-            inJustDecodeBounds = false
-            BitmapFactory.decodeByteArray(byteArray, 0, byteArray.size, this)
-
-        }
-
-    }
-
-    private fun calulateSampleSize(
-        options: BitmapFactory.Options,
-        reqHeight: Int=100,
-        reqWidth: Int=100
-    ): Int {
-        val (height: Int, width: Int) = options.run { outHeight to outWidth }
-        var inSampleSize = 1
-        if (height > reqHeight || width > reqWidth) {
-            val halfWidth = width / 2
-            val halfHeight = height / 2
-
-            while (halfHeight / inSampleSize >= reqHeight && halfWidth / inSampleSize >= reqWidth) {
-                inSampleSize *= 2
-            }
-        }
-
-        return inSampleSize
-    }
 
 }

@@ -7,13 +7,17 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.layouts.R
+import com.example.models.BlurViewModel
 import com.example.utilis.UtilsFragments
 import kotlinx.android.synthetic.main.fragment_click.*
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class ClickFragment : Fragment() {
+
+    private val model by sharedViewModel<BlurViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,

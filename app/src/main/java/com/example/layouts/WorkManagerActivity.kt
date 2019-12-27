@@ -16,22 +16,24 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.work.WorkManager
+import com.example.*
 import com.example.fragments.ClickFragment
 import com.example.fragments.ImageFilterFragment
 import com.example.models.BlurViewModel
 import com.example.utilis.UtilsFragments
 import kotlinx.android.synthetic.main.fragment_image_filter.*
+import org.koin.android.ext.android.inject
+import org.koin.android.viewmodel.ext.android.viewModel
 import java.util.ArrayList
 
 class WorkManagerActivity : AppCompatActivity(), UtilsFragments {
 
-    lateinit var model: BlurViewModel
+    val model: BlurViewModel by viewModel()
+    private val workManager by inject<WorkManager>()
     private var mPermissionCount: Int = 0
     private var undoList = ArrayList<Uri>()
     private var saveImageUri = ""
-
 
     override fun undo() {
         val image = BitmapFactory.decodeStream(
@@ -60,14 +62,12 @@ class WorkManagerActivity : AppCompatActivity(), UtilsFragments {
             picIntent.resolveActivity(packageManager)?.also {
 
                 startActivityForResult(picIntent, CLICK_IMAGE_REQUEST)
-
             }
         }
 
     }
 
     override fun changeFragments() {
-        supportFragmentManager.beginTransaction().remove(ClickFragment()).commit()
         supportFragmentManager.beginTransaction()
             .replace(R.id.worker_place_holder, ImageFilterFragment()).commit()
     }
@@ -78,7 +78,7 @@ class WorkManagerActivity : AppCompatActivity(), UtilsFragments {
 
         requestPermissionNecessary()
 
-        WorkManager.getInstance(applicationContext)
+        workManager
             .getWorkInfosByTagLiveData(BlurViewModel.BLUR_WORKER).observe(
                 this, Observer {
                     if (it.size > 0) {
@@ -87,6 +87,7 @@ class WorkManagerActivity : AppCompatActivity(), UtilsFragments {
                             saveImageUri = it
                             Log.d(TAG, "changing picture")
                             ivClickedImage?.setImageURI(Uri.parse(it))
+
                             progress_bar?.visibility = View.GONE
                             btnUndo?.isEnabled = true
                         }
@@ -94,8 +95,6 @@ class WorkManagerActivity : AppCompatActivity(), UtilsFragments {
 
                 }
             )
-        model = ViewModelProviders.of(this)[BlurViewModel::class.java]
-
         supportFragmentManager.beginTransaction().replace(R.id.worker_place_holder, ClickFragment())
             .commit()
 
@@ -131,8 +130,8 @@ class WorkManagerActivity : AppCompatActivity(), UtilsFragments {
     }
 
     override fun onBackPressed() {
-        model.saveImage(saveImageUri)
         super.onBackPressed()
+       model.saveImage(saveImageUri)
     }
 
     private fun requestPermissionNecessary() {
@@ -182,15 +181,7 @@ class WorkManagerActivity : AppCompatActivity(), UtilsFragments {
 
     companion object {
         const val TAG = "WorkManagerActivity"
-        const val CLICK_IMAGE_REQUEST = 1
-        const val GET_IMAGE = 2
-        private const val REQUEST_CODE_PERMISSIONS = 101
-        private const val KEY_PERMISSIONS_REQUEST_COUNT = "KEY_PERMISSIONS_REQUEST_COUNT"
-        private const val MAX_NUMBER_REQUEST_PERMISSIONS = 2
-        private val sPermissions: Array<String> = arrayOf(
-            Manifest.permission.READ_EXTERNAL_STORAGE,
-            Manifest.permission.WRITE_EXTERNAL_STORAGE
-        )
+
     }
 
 

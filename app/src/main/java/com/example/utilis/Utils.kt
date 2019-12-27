@@ -9,7 +9,7 @@ class Utils {
     companion object Utility {
         fun handleClick(context: Context, position: Int) {
 
-            var intent: Intent = Intent()
+            var intent = Intent()
 
             when (position) {
 
@@ -60,6 +60,12 @@ class Utils {
                 22 -> intent = Intent(context, ServiceActivity::class.java)
 
                 23 -> intent = Intent(context, WorkManagerActivity::class.java)
+
+                24 -> intent = Intent(context,RetrofitActivity::class.java)
+
+                25 -> intent = Intent(context,NavigationActivity::class.java)
+
+                26 ->intent = Intent(context,ConditionalNavigationActivity::class.java)
 
             }
 

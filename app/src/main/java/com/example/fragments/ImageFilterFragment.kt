@@ -12,10 +12,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.layouts.R
 import com.example.layouts.WorkManagerActivity
+import com.example.models.BlurViewModel
 import com.example.utilis.UtilsFragments
 import kotlinx.android.synthetic.main.fragment_image_filter.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 
 class ImageFilterFragment : Fragment() {
+
+    private val model by sharedViewModel<BlurViewModel>()
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -41,13 +46,16 @@ class ImageFilterFragment : Fragment() {
        }
 
 
+
+
+
     }
+
+
 
 
     companion object{
         const val TAG ="ImageFilterFragment"
-        const val CLICK_IMAGE_REQUEST = 1
-        const val GET_IMAGE = 2
     }
 
 

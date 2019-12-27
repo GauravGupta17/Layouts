@@ -2,29 +2,25 @@ package com.example.models
 
 import android.content.Context
 import android.net.Uri
-import android.util.Log
-import android.view.View
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.work.*
-import com.example.appctx
-import com.example.layouts.WorkManagerActivity
 import com.example.worker.BlurWorker
 import com.example.worker.CleanWorker
 import com.example.worker.SaveImageFileWorker
-import kotlinx.android.synthetic.main.fragment_image_filter.*
+import org.koin.core.KoinComponent
+import org.koin.core.inject
 
-class BlurViewModel : ViewModel() {
+class BlurViewModel : ViewModel(),KoinComponent {
 
-    private val workManager = WorkManager.getInstance(appctx)
+    private val workManager by inject<WorkManager>()
     var uri: Uri? = null
     var blurlevel:Int =0
     lateinit var activitContext:Context
 
 
-    fun applyBlur(blurlevel: Int) {
+    fun applyBlur(blurLevel: Int) {
 
-        this.blurlevel =blurlevel
+        this.blurlevel =blurLevel
         val cleanTask = OneTimeWorkRequest.from(CleanWorker::class.java)
 
         val blurTask = OneTimeWorkRequestBuilder<BlurWorker>().addTag(BLUR_WORKER).setInputData(getInputData()).build()
@@ -44,10 +40,8 @@ class BlurViewModel : ViewModel() {
         /*val constraints = Constraints.Builder().setRequiresCharging(true).build()*/
         val saveTask = OneTimeWorkRequestBuilder<SaveImageFileWorker>().setInputData(saveData).addTag(SAVE_WORKER).build()
         workManager.enqueue(saveTask)
-
-
-
     }
+
 
     private fun getStringImageUri(): String {
         return uri.toString()

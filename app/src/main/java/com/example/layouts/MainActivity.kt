@@ -53,8 +53,11 @@ class MainActivity : AppCompatActivity() {
             "View Pager Basic",
             "View Pager Tab",
             "View Pager 2",
-            "Services"
-        ,   "WorkManager"
+            "Services",
+            "WorkManager",
+            "Retrofit"
+        ,   "Navigation Basics",
+            "Cond Navigation"
         )
 
         viewAdapter = ActivityAdapter(activitylist)

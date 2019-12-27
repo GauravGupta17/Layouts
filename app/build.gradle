@@ -6,6 +6,8 @@ apply plugin: 'kotlin-android-extensions'
 
 apply plugin: 'kotlin-kapt'
 
+apply plugin: "androidx.navigation.safeargs.kotlin"
+
 android {
     compileSdkVersion 28
     buildToolsVersion "29.0.2"
@@ -39,7 +41,9 @@ dependencies {
     def lifecycle_version = "2.1.0"
     def room_version = "2.2.2"
     def work_version = "2.3.0-alpha02"
-
+    def dagger_version = "2.25.2"
+    def koin_version = '2.0.1'
+    def nav_version = "2.1.0"
 
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
@@ -80,11 +84,42 @@ dependencies {
     //WorkManager
     implementation "androidx.work:work-runtime-ktx:$work_version"
 
+    //Dagger
+    implementation "com.google.dagger:dagger:$dagger_version"
+    kapt "com.google.dagger:dagger-compiler:$dagger_version"
+
+    //Koin
+    implementation "org.koin:koin-android-viewmodel:$koin_version"
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.6.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.5.0'
+    implementation "com.squareup.retrofit2:converter-moshi:2.6.0"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.2.1"
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.8.0"
+
+
+    //Glide
+    implementation "com.github.bumptech.glide:glide:4.10.0"
+    kapt 'com.github.bumptech.glide:compiler:4.9.0'
+
    //material designs
-    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
+
+    //Navigation
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
+
+    //Testing 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    androidTestImplementation 'androidx.test:rules:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-intents:3.2.0'
+    androidTestImplementation 'androidx.test.uiautomator:uiautomator:2.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-contrib:3.2.0'
+
+
 }
 
 apply plugin: 'com.google.gms.google-services'
