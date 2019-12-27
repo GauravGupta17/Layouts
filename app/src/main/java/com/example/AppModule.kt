@@ -2,6 +2,7 @@ package com.example
 
 import android.content.Context
 import androidx.work.WorkManager
+import com.example.Repos.FirebaseRepo
 import com.example.layouts.R
 import com.example.models.BlurViewModel
 import com.example.models.LogInVm
@@ -26,6 +27,7 @@ val firebaseModule = module {
     single { FirebaseAuth.getInstance() }
     single { FirebaseFirestore.getInstance() }
     single { getGoogleClient(get()) }
+    single { FirebaseRepo(get()) }
 }
 
 
