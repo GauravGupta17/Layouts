@@ -1,13 +1,15 @@
 package com.example.layouts
 
-import android.app.Activity
+
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.NavController
-import androidx.navigation.findNavController
+import androidx.navigation.Navigation
+import androidx.navigation.ui.NavigationUI
 import com.example.models.LogInVm
+import kotlinx.android.synthetic.main.activity_conditional_navigation.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
 class ConditionalNavigationActivity : AppCompatActivity() {
@@ -15,6 +17,9 @@ class ConditionalNavigationActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_conditional_navigation)
+
+        val navController = Navigation.findNavController(this,R.id.nav_host_fragment)
+        NavigationUI.setupWithNavController(btmNavSongs,navController)
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -34,6 +39,7 @@ class ConditionalNavigationActivity : AppCompatActivity() {
 
                 else -> menu?.findItem(R.id.signOut)?.isVisible = false
 
+
             }
         })
 
@@ -46,6 +52,7 @@ class ConditionalNavigationActivity : AppCompatActivity() {
         return when (item.itemId) {
             R.id.signOut -> {
                 loginVm.signOut()
+                btmNavSongs.visibility = View.GONE
                 true
             }
 
@@ -54,5 +61,7 @@ class ConditionalNavigationActivity : AppCompatActivity() {
         }
 
     }
+
+
 
 }

@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.READ_USER_DICTIONARY" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
 
     <application
         android:name="com.example.App"
@@ -98,7 +99,17 @@
         <activity android:name=".NavigationActivity" />
         <activity android:name=".ConditionalNavigationActivity"
                   android:windowSoftInputMode="adjustResize"
-             />
+             >
+            <intent-filter>
+                <action android:name="android.intent.action.SEND"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:mimeType="text/*"/>
+            </intent-filter>
+
+
+        </activity>
+        <activity android:name=".DynamicPermissionActivity" />
+        <activity android:name=".DialogActivity" />
 
         <service
             android:name="com.example.service.MyFirebaseService"

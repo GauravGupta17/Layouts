@@ -6,8 +6,11 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import com.example.FAILURE
 import com.example.layouts.R
 import com.example.models.LogInVm
+import com.example.models.PlaylistUsers
+import com.example.models.PlaylistVm
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.fragment_user_details.*
 import org.koin.android.ext.android.inject
@@ -17,7 +20,7 @@ class UserDetailsFragment : Fragment() {
 
     private val firebaseAuth by inject<FirebaseAuth>()
     private val logInVm by sharedViewModel<LogInVm>()
-
+    private val playlistVm by sharedViewModel<PlaylistVm>()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -29,13 +32,18 @@ class UserDetailsFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        val email = firebaseAuth.currentUser?.email ?: ""
-        val name = firebaseAuth.currentUser?.displayName ?: ""
+        var email = firebaseAuth.currentUser?.email ?: ""
+        var name = firebaseAuth.currentUser?.displayName ?: ""
         putEmailAndName(email, name)
 
         btnSubmit.setOnClickListener {
-            validateCred(etEmail.text.toString(), etName.text.toString())
+            email = etEmail.text.toString()
+            name = etName.text.toString()
+            validateCred(email, name)
+            addUser(email, name)
+            findNavController().navigate(R.id.action_userDetailsFragment_to_songListFragment)
         }
+
         logInVm.authState.observe(this, Observer {
             if (it == LogInVm.AuthenticationState.SIGNOUT) findNavController().navigate(R.id.action_userDetailsFragment_to_loginFragment)
 
@@ -44,19 +52,22 @@ class UserDetailsFragment : Fragment() {
     }
 
     private fun validateCred(email: String, name: String) {
-
         if (email.isBlank() && name.isBlank()) {
             Toast.makeText(context, "Enter Credentials", Toast.LENGTH_LONG).show()
             return
-
         }
-
-
     }
 
     private fun putEmailAndName(email: String, name: String) {
         etEmail.setText(email)
         etName.setText(name)
+    }
+
+    private fun addUser(email: String, name: String) {
+        if (playlistVm.addUser(PlaylistUsers(email, name)) == FAILURE) {
+            Toast.makeText(this.context, "Failed to Add Users", Toast.LENGTH_LONG).show()
+            return
+        }
     }
 
     companion object {

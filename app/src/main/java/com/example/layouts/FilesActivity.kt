@@ -36,18 +36,21 @@ class FilesActivity : AppCompatActivity() {
 
         /*lifecycle.addObserver(LifecycleListener {Toast.makeText(this,it,Toast.LENGTH_SHORT).show()})*/
 
-
-
-
+        btnShow.isEnabled = false
+        btnSave.isEnabled = false
 
 
         btnClick.setOnClickListener {
             createFile()
             takePicture()
+
+            btnSave.isEnabled = true
+
         }
 
         btnSave.setOnClickListener {
             imgSave()
+            btnShow.isEnabled = true
 
         }
 

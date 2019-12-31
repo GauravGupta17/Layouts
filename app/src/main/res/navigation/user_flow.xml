@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/user_flow.xml"
+    app:startDestination="@id/songListFragment">
+
+    <fragment
+        android:id="@+id/songListFragment"
+        android:name="com.example.fragments.SongListFragment"
+        android:label="SongListFragment"
+        tools:layout="@layout/fragment_song_list"
+        />
+    <fragment
+        android:id="@+id/addSongFragment"
+        android:name="com.example.fragments.AddSongFragment"
+        android:label="AddSongFragment"
+        tools:layout="@layout/fragment_add_song"/>
+    <fragment
+        android:id="@+id/songsFragment"
+        android:name="com.example.fragments.SongsFragment"
+        android:label="SongsFragment"
+        tools:layout="@layout/fragment_songs"
+        >
+        <action
+            android:id="@+id/action_songsFragment_to_songListFragment"
+            app:destination="@id/songListFragment" />
+        <action
+            android:id="@+id/action_songsFragment_to_addSongFragment"
+            app:destination="@id/addSongFragment" />
+    </fragment>
+</navigation>

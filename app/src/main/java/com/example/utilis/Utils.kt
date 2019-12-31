@@ -67,6 +67,10 @@ class Utils {
 
                 26 ->intent = Intent(context,ConditionalNavigationActivity::class.java)
 
+                27 -> intent = Intent(context,DynamicPermissionActivity::class.java)
+
+                28 -> intent = Intent(context,DialogActivity::class.java)
+
             }
 
             context.startActivity(intent)

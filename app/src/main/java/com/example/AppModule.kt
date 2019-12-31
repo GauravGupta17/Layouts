@@ -6,6 +6,7 @@ import com.example.Repos.FirebaseRepo
 import com.example.layouts.R
 import com.example.models.BlurViewModel
 import com.example.models.LogInVm
+import com.example.models.PlaylistVm
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
@@ -17,6 +18,7 @@ import org.koin.dsl.module
 val vmModule = module {
     viewModel {BlurViewModel()}
     viewModel { LogInVm() }
+    viewModel { PlaylistVm() }
 }
 
 val appModule = module {

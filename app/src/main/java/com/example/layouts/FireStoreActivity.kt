@@ -15,10 +15,6 @@ class FireStoreActivity : AppCompatActivity() {
         val db = FirebaseFirestore.getInstance()
 
         val list = listOf<SongInfo>()
-        val user = PlaylistUsers("1","gauravkld@gmail.com","gaurav")
-
-        db.collection("playlistUsers").document(user.email).set(user)
-        db.collection("playlistUsers").document(user.email).collection("songs").document("songName").set(SongInfo("Songanyname","url"))
 
         db.collection("playlist").get().addOnSuccessListener {
 

@@ -57,7 +57,9 @@ class MainActivity : AppCompatActivity() {
             "WorkManager",
             "Retrofit"
         ,   "Navigation Basics",
-            "Cond Navigation"
+            "Cond Navigation",
+            "Dynamic permission",
+            "Dialogs"
         )
 
         viewAdapter = ActivityAdapter(activitylist)

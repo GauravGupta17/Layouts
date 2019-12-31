@@ -23,3 +23,8 @@ const val GOOGLE_API_KEY ="AIzaSyC0CWqHrCdmIEzUu6INA5k0atcx4k_l1C0"
 const val OXFORD_API = "a22127c3"
 
 const val RC_SIGN = 9001
+
+const val SUCCESS = 1
+
+const val FAILURE =0
+

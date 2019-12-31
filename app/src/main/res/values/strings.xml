@@ -88,5 +88,16 @@
     <string name="signup">signUp</string>
     <string name="done">Done</string>
     <string name="signout">Signout</string>
+    <string name="songs">Songs</string>
+    <string name="add_songs">Add</string>
+    <string name="profile">Profile</string>
+    <string name="friends">Friends</string>
+    <string name="favourites">Favourites</string>
+    <string name="songs_list">Songs List</string>
+    <string name="song">Song</string>
+    <string name="optionsbutton">OptionsButton</string>
+    <string name="dialog_fragment">dialog fragment</string>
+    <string name="alert_dialog">alert Dialog</string>
+
 
 </resources>

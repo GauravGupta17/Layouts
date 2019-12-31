@@ -1,5 +1,7 @@
 package com.example.adapters
 
+
+
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,8 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.entities.Song
 import com.example.utilis.DataChange
 
-class GenAdapter<T, V : RecyclerView.ViewHolder>(
-    var list: ArrayList<T>,
+class GenAdapter2<T, V : RecyclerView.ViewHolder>(
+    var list: List<T>,
     private var vh: (View) -> V,
     private var layoutRes: Int,
     private var vhBinder: (Int, V) -> Unit
@@ -28,7 +30,7 @@ class GenAdapter<T, V : RecyclerView.ViewHolder>(
 
     }
 
-    fun dataUpdate(position: Int, data: T) {
+    /*fun dataUpdate(position: Int, data: T) {
         list[position] = data
         notifyItemChanged(position)
     }
@@ -41,12 +43,7 @@ class GenAdapter<T, V : RecyclerView.ViewHolder>(
     fun dataInsert(data: T) {
         list.add(data)
         notifyItemInserted(list.lastIndex)
-    }
+    }*/
 
-    fun datasetChanged(list:ArrayList<T>)
-    {
-        this.list = list
-        notifyDataSetChanged()
-    }
 
 }

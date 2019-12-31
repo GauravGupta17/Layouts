@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.example.RC_SIGN
@@ -35,7 +36,7 @@ class LoginFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         if (firebaseAuth.currentUser != null) {
-            findNavController().navigate(R.id.action_loginFragment_to_userDetailsFragment)
+            findNavController().navigate(R.id.action_loginFragment_to_songListFragment)
         }
 
         btnGoogleSignIn.setOnClickListener {
@@ -47,14 +48,11 @@ class LoginFragment : Fragment() {
             when (it) {
                 LogInVm.AuthenticationState.AUTHENTICATED -> findNavController().navigate(R.id.action_loginFragment_to_userDetailsFragment)
 
-                LogInVm.AuthenticationState.SIGNOUT -> Snackbar.make(loginFragment,"Signout",Snackbar.LENGTH_LONG).show()
-
-                else -> Snackbar.make(loginFragment, "login Failed", Snackbar.LENGTH_LONG).show()
+                else -> println("in login fragment")
             }
         })
-
-
     }
+
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -72,6 +70,7 @@ class LoginFragment : Fragment() {
         }
 
     }
+
 
     private fun googleSignIn(intent: Intent) {
         startActivityForResult(intent, RC_SIGN)
