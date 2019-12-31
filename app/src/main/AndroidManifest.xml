@@ -110,6 +110,7 @@
         </activity>
         <activity android:name=".DynamicPermissionActivity" />
         <activity android:name=".DialogActivity" />
+        <activity android:name=".NotificationActivity" />
 
         <service
             android:name="com.example.service.MyFirebaseService"

@@ -71,6 +71,8 @@ class Utils {
 
                 28 -> intent = Intent(context,DialogActivity::class.java)
 
+                29 -> intent = Intent(context,NotificationActivity::class.java)
+
             }
 
             context.startActivity(intent)

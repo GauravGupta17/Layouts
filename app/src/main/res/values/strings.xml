@@ -98,6 +98,10 @@
     <string name="optionsbutton">OptionsButton</string>
     <string name="dialog_fragment">dialog fragment</string>
     <string name="alert_dialog">alert Dialog</string>
+    <string name="get_notification">get Notification</string>
+    <string name="get_progress_notifi">get progress notifi</string>
+    <string name="expandable_notif">expandable notif</string>
+    <string name="bubble">Bubble</string>
 
 
 </resources>

@@ -59,7 +59,8 @@ class MainActivity : AppCompatActivity() {
         ,   "Navigation Basics",
             "Cond Navigation",
             "Dynamic permission",
-            "Dialogs"
+            "Dialogs",
+            "Notification"
         )
 
         viewAdapter = ActivityAdapter(activitylist)
