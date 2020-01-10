@@ -107,9 +107,7 @@ class NotificationActivity : AppCompatActivity() {
       return builder.build()
   }
 
- private fun getbubble(){
 
- }
 
 
 

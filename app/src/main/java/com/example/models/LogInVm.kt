@@ -63,6 +63,14 @@ class LogInVm : ViewModel(), KoinComponent {
 
 
     }
+    fun getDisplayPicture(): String {
+        return firebaseAuth.currentUser?.photoUrl.toString()
+    }
+
+    fun getUserName():String{
+        return firebaseAuth.currentUser?.displayName ?:""
+    }
+
 
     enum class AuthenticationState {
         UNAUTHENTICATED,

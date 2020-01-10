@@ -60,7 +60,10 @@ class MainActivity : AppCompatActivity() {
             "Cond Navigation",
             "Dynamic permission",
             "Dialogs",
-            "Notification"
+            "Notification",
+            "Kpermissions",
+            "Retrofit",
+            "Hide & Show Frag"
         )
 
         viewAdapter = ActivityAdapter(activitylist)
@@ -105,7 +108,6 @@ class MainActivity : AppCompatActivity() {
             )
 
         }
-
 
         return true
     }

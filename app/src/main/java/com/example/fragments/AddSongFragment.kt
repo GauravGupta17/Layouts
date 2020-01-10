@@ -6,8 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.navigation.NavArgs
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.FAILURE
+import com.example.layouts.CondnavgraphDirections
 import com.example.layouts.R
 import com.example.models.LogInVm
 import com.example.models.PlaylistVm
@@ -19,6 +22,7 @@ class AddSongFragment :Fragment(){
 
     private val playlistVm by sharedViewModel<PlaylistVm>()
     private val logInVm by sharedViewModel<LogInVm> ()
+    private val args:AddSongFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,19 +35,11 @@ class AddSongFragment :Fragment(){
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        etSongUrl.setText(args.url)
+
         btnSubmit.setOnClickListener {
             validateAndAdd(etSongName.text.toString(),etSongUrl.text.toString())
         }
-
-        logInVm.authState.observe(this, androidx.lifecycle.Observer {
-            when (it) {
-
-                LogInVm.AuthenticationState.SIGNOUT -> findNavController().navigate(R.id.action_addSongFragment_to_loginFragment)
-
-                else -> println("signout failed")
-            }
-        })
-
 
     }
 

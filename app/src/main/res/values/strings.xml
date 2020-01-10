@@ -102,6 +102,9 @@
     <string name="get_progress_notifi">get progress notifi</string>
     <string name="expandable_notif">expandable notif</string>
     <string name="bubble">Bubble</string>
+    <string name="username">userName</string>
+    <string name="openDrawer">open</string>
+    <string name="closeDrawer">close</string>
 
 
 </resources>

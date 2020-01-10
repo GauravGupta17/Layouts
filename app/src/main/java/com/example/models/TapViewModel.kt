@@ -39,7 +39,7 @@ class TapViewModel : ViewModel() {
         return nTimer
     }
 
-    fun blink() {
+    fun startTimer() {
         viewModelScope.launch {
 
             for (s in intialwords) {

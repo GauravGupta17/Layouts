@@ -24,12 +24,9 @@
         android:icon="@drawable/ic_favorite_black_24dp"
         />
     <item
-        android:id="@+id/userInfo"
+        android:id="@+id/userProfileFragment"
         android:title="@string/profile"
         android:icon="@drawable/ic_perm_identity_black_24dp"
         />
-
-
-
 
 </menu>

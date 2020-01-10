@@ -22,7 +22,7 @@ class App :Application(),Configuration.Provider {
 
         startKoin {
             androidContext(this@App)
-            modules(listOf(vmModule, appModule, firebaseModule))
+            modules(listOf(vmModule, appModule, firebaseModule, retrofitModule))
         }
     }
 

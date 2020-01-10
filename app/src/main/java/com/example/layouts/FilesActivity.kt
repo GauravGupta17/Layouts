@@ -56,9 +56,9 @@ class FilesActivity : AppCompatActivity() {
 
         btnShow.setOnClickListener {
             imgShow()
+            btnShow.isEnabled = false
+            btnSave.isEnabled = false
         }
-
-
     }
 
     private fun imgShow() {
@@ -90,13 +90,11 @@ class FilesActivity : AppCompatActivity() {
 
         file = File(path,"image1$i.png").apply {
             createNewFile()
-
         }
-
-
-            if (!path.exists())
+        if (!path.exists())
                 println("not exist")
-        }
+
+    }
 
 
 

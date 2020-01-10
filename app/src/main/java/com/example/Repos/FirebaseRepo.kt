@@ -1,25 +1,15 @@
 package com.example.Repos
 
-import android.util.Log
-import androidx.lifecycle.MutableLiveData
+
 import com.example.FAILURE
 import com.example.SUCCESS
-import com.example.entities.Song
 import com.example.models.PlaylistUsers
-import com.example.models.PlaylistVm
 import com.example.models.SongInfo
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.flow.channelFlow
-import kotlinx.coroutines.launch
-import org.koin.core.Koin
 import org.koin.core.KoinComponent
 import org.koin.core.inject
-import kotlin.coroutines.resume
-import kotlin.coroutines.suspendCoroutine
+
 
 class FirebaseRepo(private val db: FirebaseFirestore) : KoinComponent {
 
@@ -48,7 +38,7 @@ class FirebaseRepo(private val db: FirebaseFirestore) : KoinComponent {
         return flag
     }
 
-   suspend fun getSongsList(): ArrayList<SongInfo> {
+    fun getSongsList(): ArrayList<SongInfo> {
 
         list.ifEmpty {
             fetchData()
@@ -56,7 +46,7 @@ class FirebaseRepo(private val db: FirebaseFirestore) : KoinComponent {
         return list
     }
 
-    private suspend fun fetchData() {
+    private fun fetchData() {
 
       db.collection("playlistUsers").document(email).collection("songs").get()
           .addOnSuccessListener {
@@ -67,13 +57,7 @@ class FirebaseRepo(private val db: FirebaseFirestore) : KoinComponent {
            }
 
     }
-
-    fun listenToData() {
-
-
-    }
-
-    companion object {
+  companion object {
         const val TAG = "FirebaseRepo"
 
     }

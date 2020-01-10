@@ -2,8 +2,27 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/cond_nav_graph"
+    android:id="@+id/condnavgraph"
     app:startDestination="@id/loginFragment">
+
+    <action
+        android:id="@+id/action_addSongFragment"
+        app:destination="@id/addSongFragment"
+        app:launchSingleTop="true"
+        />
+
+    <action
+        android:id="@+id/loginFragment_signout"
+        app:destination="@id/loginFragment"
+        app:launchSingleTop="true"
+        />
+
+    <action
+        android:id="@+id/action_songListFragment"
+        app:destination="@id/songListFragment"
+        app:launchSingleTop="true"
+        />
+
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.fragments.LoginFragment"
@@ -21,6 +40,15 @@
             app:popUpTo="@id/loginFragment"
             app:popUpToInclusive="true"
             />
+        <action
+            android:id="@+id/action_loginFragment_to_addSongFragment"
+            app:destination="@id/addSongFragment"
+            app:popUpTo="@id/loginFragment"
+            />
+        <argument
+            android:name="url"
+            app:argType="string"
+            android:defaultValue='" "' />
     </fragment>
 
     <fragment
@@ -30,7 +58,10 @@
         tools:layout="@layout/fragment_user_details">
         <action
             android:id="@+id/action_userDetailsFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            app:destination="@id/loginFragment"
+            app:popUpTo="@id/userDetailsFragment"
+            app:popUpToInclusive="true"
+            />
         <action
             android:id="@+id/action_userDetailsFragment_to_songListFragment"
             app:destination="@id/songListFragment"
@@ -43,27 +74,37 @@
         android:id="@+id/songListFragment"
         android:name="com.example.fragments.SongListFragment"
         android:label="SongListFragment"
-        tools:layout="@layout/fragment_song_list">
-        <action
-            android:id="@+id/action_songListFragment_to_loginFragment"
-            app:destination="@id/loginFragment"
-            app:popUpTo="@id/songListFragment"
-            app:popUpToInclusive="true"
-            app:launchSingleTop="true"
-            />
+        tools:layout="@layout/fragment_song_list"
+        >
     </fragment>
 
     <fragment
         android:id="@+id/addSongFragment"
         android:name="com.example.fragments.AddSongFragment"
         android:label="AddSongFragment"
-        tools:layout="@layout/fragment_add_song">
+        tools:layout="@layout/fragment_add_song"
+
+        >
+        <argument
+            android:name="url"
+            app:argType="string"
+            android:defaultValue=" "/>
+
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/userProfileFragment"
+        android:name="com.example.fragments.UserProfileFragment"
+        android:label="UserProfileFragment"
+        tools:layout="@layout/fragment_user_profile"
+        >
         <action
-            android:id="@+id/action_addSongFragment_to_loginFragment"
+            android:id="@+id/action_userProfileFragment_to_loginFragment"
             app:destination="@id/loginFragment"
-            app:popUpTo="@id/songListFragment"
+            app:popUpTo="@id/userProfileFragment"
             app:popUpToInclusive="true"
-            app:launchSingleTop="true"
             />
     </fragment>
+
 </navigation>

@@ -1,39 +1,47 @@
 package com.example.models
 
-import android.util.Log
+import android.net.Uri
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.example.Repos.FirebaseRepo
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.launch
-import org.koin.core.KoinComponent
-import org.koin.core.inject
 
-class PlaylistVm : ViewModel(), KoinComponent {
-    val repo by inject<FirebaseRepo>()
+import com.example.FAILURE
+import com.example.SUCCESS
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
-    var songList = MutableLiveData<List<SongInfo>>()
+class PlaylistVm(private val db: FirebaseFirestore, private val auth: FirebaseAuth) : ViewModel() {
 
+    var songList = MutableLiveData<ArrayList<SongInfo>>()
     var list = ArrayList<SongInfo>()
 
     fun addUser(user: PlaylistUsers): Int {
-        return repo.addUser(user)
+        var flag = SUCCESS
+        db.collection("playlistUsers").document(user.email).set(user).addOnFailureListener {
+            flag = FAILURE
+        }
+        return flag
     }
 
     fun addSong(songInfo: SongInfo): Int {
-        return repo.addSong(songInfo)
+        var flag = SUCCESS
+        val email = auth.currentUser?.email ?: " "
+        db.collection("playlistUsers").document(email).collection("songs")
+            .document(songInfo.songName).set(songInfo).addOnFailureListener {
+                flag = FAILURE
+            }
+        return flag
     }
 
-    fun getSongList(): ArrayList<SongInfo> {
+    fun getSongInfoList(): MutableLiveData<ArrayList<SongInfo>> {
+        val email = auth.currentUser?.email ?: " "
+        db.collection("playlistUsers").document(email).collection("songs").get()
+            .addOnSuccessListener {
+                songList.value = it.toObjects(SongInfo::class.java) as ArrayList<SongInfo>
 
-        viewModelScope.launch(Dispatchers.IO) {
-            list = repo.getSongsList()
-        }
+            }.addOnFailureListener {
 
-        songList.value = list
-        return list
+            }
+        return songList
     }
 
     companion object {

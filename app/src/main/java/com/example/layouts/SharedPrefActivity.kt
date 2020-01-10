@@ -15,7 +15,7 @@ class SharedPrefActivity : AppCompatActivity() {
     private var highScore = 0
     var sharedPref: SharedPreferences? = null
     private val changeObserveScore = Observer<Int> {
-        tvBlink.text = it.toString()
+        tvTap.text = it.toString()
     }
 
     private val changeObserverTimer = Observer<Int> {
@@ -35,21 +35,20 @@ class SharedPrefActivity : AppCompatActivity() {
         setContentView(R.layout.activity_shared_pref)
 
 
-        model.blink()
+        model.startTimer()
 
 
         sharedPref = getSharedPreferences(getString(R.string.sharedPrefKey), Context.MODE_PRIVATE)
         tvHighScoreValue.text = sharedPref?.getString(getString(R.string.sharedPrefKey), "-1")
         highScore = tvHighScoreValue.text.toString().toInt()
+
         model.curScore.observe(this, changeObserveScore)
         model.timer.observe(this, changeObserverTimer)
         model.words.observe(this, changeObserverWords)
 
 
 
-        tvBlink.setOnClickListener {
-
-
+        tvTap.setOnClickListener {
 
             if (model.nTimer == 0) {
                 return@setOnClickListener
@@ -59,13 +58,12 @@ class SharedPrefActivity : AppCompatActivity() {
             if (model.nTimer == 10) {
 
                 setHighScoreG(model.getCurScore())
-                tvHighScoreValue.text =
-                    sharedPref?.getString(getString(R.string.sharedPrefKey), "-1")
+                tvHighScoreValue.text = sharedPref?.getString(getString(R.string.sharedPrefKey), "-1")
 
                 Snackbar.make(it, "Game Over", Snackbar.LENGTH_INDEFINITE).setAction("Try Again") {
                     model.reset()
                     reset()
-                    model.blink()
+                    model.startTimer()
 
                 }.show()
 
@@ -80,7 +78,7 @@ class SharedPrefActivity : AppCompatActivity() {
     }
 
     private fun reset() {
-        tvBlink.text = "0"
+        tvTap.text = "0"
         tvSec.text = " "
     }
 

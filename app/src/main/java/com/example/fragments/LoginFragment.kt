@@ -9,7 +9,9 @@ import android.view.ViewGroup
 import androidx.activity.addCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.example.RC_SIGN
+import com.example.layouts.CondnavgraphDirections
 import com.example.layouts.R
 import com.example.models.LogInVm
 import com.google.android.gms.auth.api.signin.GoogleSignIn
@@ -24,6 +26,7 @@ class LoginFragment : Fragment() {
 
     private val logInVm by sharedViewModel<LogInVm>()
     private val firebaseAuth by inject<FirebaseAuth>()
+    private val args:LoginFragmentArgs by navArgs()
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -36,7 +39,7 @@ class LoginFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         if (firebaseAuth.currentUser != null) {
-            findNavController().navigate(R.id.action_loginFragment_to_songListFragment)
+            findNavController().navigate(LoginFragmentDirections.actionLoginFragmentToSongListFragment())
         }
 
         btnGoogleSignIn.setOnClickListener {
@@ -79,5 +82,4 @@ class LoginFragment : Fragment() {
     companion object {
         const val TAG = "LoginFragment"
     }
-
 }

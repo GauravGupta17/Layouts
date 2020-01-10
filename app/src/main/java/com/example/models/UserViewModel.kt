@@ -24,11 +24,7 @@ class UserViewModel(application: Application) : ViewModel() {
         viewModelScope.launch(Dispatchers.IO) {
             db.insertUserInfo(user)
         }
-
         nameInsert = name
-
-
-
     }
 
     fun updateTv() {

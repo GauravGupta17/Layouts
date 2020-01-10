@@ -30,7 +30,7 @@ class RetrofitActivity : AppCompatActivity() {
 
         val logger = HttpLoggingInterceptor()
 
-        logger.level = HttpLoggingInterceptor.Level.BODY
+        logger.level = HttpLoggingInterceptor.Level.HEADERS
 
         val httpClient = OkHttpClient.Builder().addInterceptor(logger)
 

@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.adapters.GenAdapter
 import com.example.adapters.GenAdapter2
 import com.example.dialogs.DeleteDialog
+import com.example.layouts.CondnavgraphDirections
 import com.example.layouts.R
 import com.example.models.LogInVm
 import com.example.models.PlaylistVm
@@ -28,20 +29,17 @@ import kotlinx.android.synthetic.main.activity_conditional_navigation.*
 import kotlinx.android.synthetic.main.fragment_song_list.*
 import kotlinx.android.synthetic.main.song_view.*
 import kotlinx.android.synthetic.main.song_view.view.*
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
+import kotlinx.coroutines.*
 import org.koin.android.viewmodel.ext.android.sharedViewModel
 import kotlin.coroutines.CoroutineContext
 import kotlin.coroutines.coroutineContext
 
 class SongListFragment : Fragment() {
 
-    private val logInVm by sharedViewModel<LogInVm>()
     private val playlistVm by sharedViewModel<PlaylistVm>()
     private lateinit var viewAdapter: GenAdapter<SongInfo, SongVH>
-    val dialogFragment = DeleteDialog()
+    private val dialogFragment = DeleteDialog()
+    var list = ArrayList<SongInfo>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,37 +51,33 @@ class SongListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         activity?.btmNavSongs?.visibility = View.VISIBLE
-        logInVm.authState.observe(this, androidx.lifecycle.Observer {
-            when (it) {
-                LogInVm.AuthenticationState.SIGNOUT -> findNavController().navigate(R.id.action_songListFragment_to_loginFragment)
-                else -> println("signout failed")
-            }
-        })
 
-            inflateRV(playlistVm.getSongList())
+        playlistVm.getSongInfoList().observe(this, Observer {
+            list.clear()
+            list.addAll(it)
+            viewAdapter.datasetChanged(list)
+
+        })
+        inflateRV(list)
 
     }
 
     class SongVH(view: View) : RecyclerView.ViewHolder(view)
 
-    private  fun inflateRV(list: ArrayList<SongInfo>) {
-
+    private fun inflateRV(list: ArrayList<SongInfo>) {
 
         viewAdapter = GenAdapter(list, { SongVH(it) }, R.layout.song_view, { position, holder ->
             holder.itemView.tvSongName.text = list[position].songName
             holder.itemView.ivFav.setOnClickListener {
                 holder.itemView.ivFav?.setImageResource(R.drawable.ic_favorite_black_24dp)
-                Toast.makeText(context,"change color",Toast.LENGTH_LONG).show()
+                Toast.makeText(context, "change color", Toast.LENGTH_LONG).show()
             }
             holder.itemView.ivOptions.setOnClickListener {
                 fragmentManager?.let {
-                    dialogFragment.show(it,"missiles")
+                    dialogFragment.show(it, "missiles")
                 }
-
             }
-
 
         })
         rvUserSongList.apply {
@@ -92,7 +86,6 @@ class SongListFragment : Fragment() {
 
         }
     }
-
 
 
 }

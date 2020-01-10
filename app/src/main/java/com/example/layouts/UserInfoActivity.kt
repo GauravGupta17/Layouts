@@ -20,10 +20,7 @@ class UserInfoActivity : AppCompatActivity() {
 
         model.nameLive.observe(this, observable)
 
-
-
         btnSubmit.setOnClickListener {
-
             model.insert(etDbName.text.toString())
             model.updateTv()
         }

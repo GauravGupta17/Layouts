@@ -40,7 +40,7 @@
         android:layout_marginBottom="20dp"
         android:textSize="60sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tvBlink"
+        app:layout_constraintBottom_toTopOf="@id/tvTap"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -57,7 +57,7 @@
 
 
     <TextView
-        android:id="@+id/tvBlink"
+        android:id="@+id/tvTap"
         style="@style/TextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

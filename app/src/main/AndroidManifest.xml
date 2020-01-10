@@ -111,6 +111,10 @@
         <activity android:name=".DynamicPermissionActivity" />
         <activity android:name=".DialogActivity" />
         <activity android:name=".NotificationActivity" />
+        <activity android:name=".KPermissionsActivity" />
+        <activity android:name=".RetrofitMvvmActivity" />
+        <activity android:name=".FragmentsHidandShow" />
+        <activity android:name=".FragmentsHidAndShowActivity" />
 
         <service
             android:name="com.example.service.MyFirebaseService"

@@ -24,12 +24,7 @@
         android:layout_height="wrap_content"
         android:text="@string/expandable_notif"
         />
-    <Button
-        android:id="@+id/btnBubble"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/bubble"
-        />
+
 
 
 

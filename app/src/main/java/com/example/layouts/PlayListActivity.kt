@@ -61,7 +61,6 @@ class PlayListActivity : AppCompatActivity() {
                     putExtra(POSITION, position)
                 }
                 startActivityForResult(intent, UPDATE_DELETE_REQUEST)
-
             }
             holder.itemView.setOnLongClickListener() {
                 Toast.makeText(this, "Goes to Song Sites", Toast.LENGTH_SHORT).show()

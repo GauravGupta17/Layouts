@@ -6,16 +6,16 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.layouts.R
-import java.io.File
 
-class ContactListFragment :Fragment(){
+class UserProfileFragment2 :Fragment(){
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_contact_list,container,false)
+        return inflater.inflate(R.layout.fragment_user_profile,container,false)
     }
+
 
 }
